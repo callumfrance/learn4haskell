@@ -673,14 +673,11 @@ aren't ready for this boss yet!
 -}
 
 firstDigit :: Int -> Int
-firstDigit n =
-    let n2 = abs n
-    in rToOne n2
-    where
-        rToOne :: Int -> Int
-        rToOne p
-            | p > 10 = rToOne (div p 10)
-            | otherwise = p
+firstDigit n = rToOne (divMod (abs n) 10)
+  where
+    rToOne :: (Int, Int) -> Int
+    rToOne (0, p) = p
+    rToOne (s, _) = go (divMod s 10)
 
 {-
 You did it! Now it is time to open pull request with your changes
