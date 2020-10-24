@@ -677,7 +677,7 @@ firstDigit n = rToOne (divMod (abs n) 10)
   where
     rToOne :: (Int, Int) -> Int
     rToOne (0, p) = p
-    rToOne (s, _) = go (divMod s 10)
+    rToOne (s, _) = rToOne (divMod s 10)
 
 {-
 You did it! Now it is time to open pull request with your changes
