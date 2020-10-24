@@ -678,11 +678,9 @@ firstDigit n =
     in rToOne n2
     where
         rToOne :: Int -> Int
-        moreMod :: Int -> Bool
         rToOne p
-            | moreMod p = rToOne (div p 10)
+            | p > 10 = rToOne (div p 10)
             | otherwise = p
-        moreMod p = if p > 10 then True else False
 
 {-
 You did it! Now it is time to open pull request with your changes
